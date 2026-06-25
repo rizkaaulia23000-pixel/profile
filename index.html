@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Aesthetic - Data Diri</title>
+    <style>
+        /* Global Reset & Typography */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f3effa; /* Latar belakang pastel ungu muda super lembut */
+            color: #4a3e56; /* Warna font ungu tua kalem agar mudah dibaca */
+            line-height: 1.6;
+            padding: 0;
+        }
+
+        /* Dekorasi Background Bunga Thumbelina */
+        .flower-bg {
+            position: fixed;
+            z-index: -1;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+        .flower-1 { top: 5%; left: 3%; width: 120px; }
+        .flower-2 { bottom: 10%; right: 5%; width: 150px; transform: rotate(45deg); }
+        .flower-3 { top: 40%; right: 2%; width: 90px; transform: rotate(-20deg); }
+
+        /* Container Utama */
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        /* Kartu Profil (Header Data Diri) */
+        .profile-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(10px);
+            border: 2px solid #e1d4f0;
+            border-radius: 24px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(163, 142, 190, 0.15);
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Aksen Bunga di Pojok Kartu */
+        .card-flower-accent {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            width: 80px;
+            opacity: 0.7;
+        }
+
+        /* Bingkai Foto Profil */
+        .profile-img-container {
+            width: 130px;
+            height: 130px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            padding: 5px;
+            background: linear-gradient(135deg, #d8bbf2, #bda2eb);
+            box-shadow: 0 5px 15px rgba(189, 162, 235, 0.4);
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            background-color: #fff;
+        }
+
+        .profile-name {
+            font-size: 24px;
+            color: #6a4c93;
+            font-weight: 700;
+            margin-bottom: 5px;
+            letter-spacing: 0.5px;
+        }
+
+        .profile-info {
+            font-size: 14px;
+            color: #8c75a4;
+            font-weight: 500;
+            background: #f0e6fc;
+            padding: 4px 14px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        /* Menu Navigasi Tab */
+        .nav-tabs {
+            display: table;
+            width: 100%;
+            background: #eadef7;
+            border-radius: 16px;
+            padding: 6px;
+            margin-bottom: 30px;
+            border: 1px solid #dfcff2;
+        }
+
+        .nav-item {
+            display: table-cell;
+            text-align: center;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 12px 10px;
+            color: #765897;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background-color: #ffffff;
+            color: #5a338b;
+            box-shadow: 0 4px 10px rgba(142, 108, 186, 0.15);
+        }
+
+        /* Bagian Konten (Sections) */
+        .content-section {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid #e6daf5;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 8px 25px rgba(163, 142, 190, 0.1);
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            color: #5a338b;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 2px dashed #ded0f0;
+            display: inline-block;
+        }
+
+        /* Box List/Grid di Dalam Konten */
+        .grid-box {
+            background: #fbf9fe;
+            border: 1px solid #eee6f7;
+            border-radius: 14px;
+            padding: 18px;
+            margin-bottom: 15px;
+            border-left: 4px solid #c7acf0;
+        }
+
+        .grid-box h4 {
+            color: #6a4c93;
+            margin-bottom: 6px;
+            font-size: 16px;
+        }
+
+        /* Badge/Tag Hobi */
+        .hobby-badge {
+            display: inline-block;
+            background-color: #f3ebfc;
+            color: #7d52b3;
+            padding: 6px 12px;
+            border-radius: 10px;
+            margin: 5px;
+            font-size: 13px;
+            font-weight: 500;
+            border: 1px solid #e1cef5;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 12px;
+            color: #a491b8;
+            letter-spacing: 1px;
+        }
+
+        .flower-icon {
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <svg style="display: none;">
+        <g id="thumbelina-flower">
+            <circle cx="50" cy="50" r="12" fill="#ffd166"/>
+            <circle cx="50" cy="50" r="8" fill="#f4a261"/>
+            <path d="M 50,38 C 45,25 55,25 50,38 Z" fill="#e9c46a"/>
+            <path d="M 50,62 C 45,75 55,75 50,62 Z" fill="#e9c46a"/>
+            <path d="M 38,50 C 25,45 25,55 38,50 Z" fill="#e9c46a"/>
+            <path d="M 62,50 C 75,45 75,55 62,50 Z" fill="#e9c46a"/>
+            <path d="M 50,38 C 30,10 20,25 42,42 Z" fill="#ff9999"/>
+            <path d="M 50,38 C 70,10 80,25 58,42 Z" fill="#ff9999"/>
+            <path d="M 50,62 C 30,90 20,75 42,58 Z" fill="#ff9999"/>
+            <path d="M 50,62 C 70,90 80,75 58,58 Z" fill="#ff9999"/>
+            <circle cx="50" cy="22" r="7" fill="#ffadad"/>
+            <circle cx="50" cy="78" r="7" fill="#ffadad"/>
+            <circle cx="22" cy="50" r="7" fill="#ffadad"/>
+            <circle cx="78" cy="50" r="7" fill="#ffadad"/>
+            <path d="M 45,75 Q 35,85 42,95" stroke="#a3b18a" stroke-width="3" fill="none"/>
+        </g>
+    </svg>
+
+    <svg class="flower-bg flower-1" viewBox="0 0 100 100"><use href="#thumbelina-flower"/></svg>
+    <svg class="flower-bg flower-2" viewBox="0 0 100 100"><use href="#thumbelina-flower"/></svg>
+    <svg class="flower-bg flower-3" viewBox="0 0 100 100"><use href="#thumbelina-flower"/></svg>
+
+    <div class="container">
+
+        <header class="profile-card">
+            <svg class="card-flower-accent" viewBox="0 0 100 100"><use href="#thumbelina-flower"/></svg>
+            
+            <div class="profile-img-container">
+                <img src="rizka.jpeg" alt="Foto Profil" class="profile-img">
+            </div>
+            
+            <h1 class="profile-name">Rizka Aulia Musyakinah S</h1>
+            <div class="profile-info">19 Tahun • Mahasiswi</div>
+            
+            <p style="font-size: 14px; color: #7a6b8a; max-width: 500px; margin: 5px auto 0; font-style: italic;">
+                "Menemukan kedamaian dalam ruang sunyi, bertumbuh secantik bunga Thumbelina di taman kehidupan."
+            </p>
+        </header>
+
+        <nav class="nav-tabs">
+            <div class="nav-item"><a href="#beranda" class="nav-link active">Beranda</a></div>
+            <div class="nav-item"><a href="#manajemen" class="nav-link">Manajemen Bisnis</a></div>
+            <div class="nav-item"><a href="#badminton" class="nav-link">Badminton</a></div>
+            <div class="nav-item"><a href="#traveling" class="nav-link">Traveling</a></div>
+        </nav>
+
+        <section id="beranda" class="content-section">
+            <h3 class="section-title">
+                <svg width="18" height="18" class="flower-icon" viewBox="0 0 100 100"><use href="#thumbelina-flower"/></svg>
+                Selamat Datang!
+            </h3>
+            <p style="margin-bottom: 15px;">
+                Ini adalah ruang portofolio digital pribadi saya yang dirancang dengan sentuhan warna ungu muda pastel hangat dan keindahan bunga Thumbelina yang melambangkan keanggunan, keceriaan, serta ketangguhan.
+            </p>
+            <p>
+                Gunakan tab menu di atas untuk menelusuri ketertarikan saya pada dunia manajemen akademis, kecintaan terhadap olahraga badminton, hingga dokumentasi perjalanan traveling saya.
+            </p>
+        </section>
+
+        <section id="manajemen" class="content-section">
+            <h3 class="section-title">
+                <svg width="18" height="18" class="flower-icon" viewBox="0 0 100 100"><use href="#thumbelina-flower"/></svg>
+                Manajemen Bisnis
+            </h3>
+            <p style="margin-bottom: 20px;">Fokus pengembangan keilmuan dan ketertarikan strategis dalam dunia profesional:</p>
+            
+            <div class="grid-layout">
+                <div class="grid-box">
+                    <h4>Manajemen Service Excellence</h4>
+                    <p style="font-size: 14px; color: #625370;">Mempelajari cara membangun tata kelola pelayanan berkualitas tinggi, menjaga kepuasan pelanggan, dan menciptakan ekosistem bisnis yang responsif.</p>
+                </div>
+                <div class="grid-box">
+                    <h4>Ekonomi Makro & Analisis Kebijakan</h4>
+                    <p style="font-size: 14px; color: #625370;">Pemahaman terkait instrumen keuangan, dinamika pergerakan nilai tukar, dan pengelolaan dampak inflasi pada pasar domestik.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="badminton" class="content-section">
+            <h3 class="section-title">
+                <svg width="18" height="18" class="flower-icon" viewBox="0 0 100 100"><use href="#thumbelina-flower"/></svg>
+                Badminton
+            </h3>
+            <p style="margin-bottom: 15px;">
+                Bagi saya, bulutangkis bukan sekadar olahraga fisik, melainkan ruang yang tepat untuk melatih ketangkasan berpikir, kedisiplinan, refleks, dan menjaga kebugaran tubuh agar tetap produktif setiap harinya.
+            </p>
+            <div>
+                <span class="hobby-badge">🏸 Single & Double Match</span>
+                <span class="hobby-badge">⚡ Agility Training</span>
+                <span class="hobby-badge">🌸 Fun Sparring</span>
+            </div>
+        </section>
+
+        <section id="traveling" class="content-section">
+            <h3 class="section-title">
+                <svg width="18" height="18" class="flower-icon" viewBox="0 0 100 100"><use href="#thumbelina-flower"/></svg>
+                Traveling
+            </h3>
+            <p style="margin-bottom: 15px;">
+                Eksplorasi tempat-tempat baru memberikan perspektif segar dan ketenangan pikiran. Saya senang mengunjungi ruang-ruang publik bernuansa seni, wisata alam tersembunyi, maupun taman bunga yang asri.
+            </p>
+            <div class="grid-layout">
+                <div class="grid-box" style="border-left-color: #f7aef8;">
+                    <h4>Destinasi Favorit & Inspirasi</h4>
+                    <p style="font-size: 14px; color: #625370;">Sudut kota bergaya estetik kontemporer, museum literatur, dan spot fotografi alam bebas yang menenangkan.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; Portofolio rizka. AA1 ♡ Tugas Teknologi sosial media.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        document.querySelectorAll('.nav-link').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Menghapus kelas aktif dari tab sebelumnya
+                document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+                
+                // Menambahkan kelas aktif ke tab yang diklik
+                this.classList.add('active');
+
+                // Mengambil elemen target id
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+
+                // Efek scroll halus ke section
+                targetSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
